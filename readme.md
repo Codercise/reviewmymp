@@ -23,6 +23,7 @@ ReviewMy.MP is made on the LAMA stack. It uses the following technology
 Each piece of the LAMA stack has it's own dependencies and if you're looking at contributing or starting your own project based off of ReviewMy.MP it will be best to review each piece of the puzzle and listen to them about requirements and help getting started.
 
 ### How do I talk to you?
+* Tweet [@Haydos585](http://twitter.com/haydos585)
 * Send me a message on GitHub
 * Open an issue on GitHub
 * Come to [#reddit-webdesign on Freenode IRC](http://webchat.freenode.net/?channels=reddit-webdesign) and ask about ReviewMy.MP
