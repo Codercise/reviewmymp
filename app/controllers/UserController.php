@@ -19,7 +19,7 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		//Currently redirects to the home page because why not.
 		return View::make('static_pages.home');
 	}
 
@@ -30,16 +30,17 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
-		$user = new User;
-		$user->email = Input::get('email');
-		$user->password = Input::get('password');
-		 array(
-			'name' => Input::get('email'),
-			'password' => Input::get('password')
-			);
 
+		$user = new User;
+		$user->username = Input::get('username');
+		$user->email = Input::get('email');
+		$user->password = Hash::make(Input::get('password'));
+		$user->save();
 		return View::make('users.store')
+			->with('id', $user->id)
+			->with('username', $user->username)
+			->with('email', $user->email)
+			->with('password', $user->password);
 	}
 
 	/**
@@ -51,6 +52,7 @@ class UserController extends \BaseController {
 	public function show($id)
 	{
 		//
+
 	}
 
 	/**
