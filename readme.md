@@ -24,6 +24,5 @@ Each piece of the LAMA stack has it's own dependencies and if you're looking at 
 
 ### How do I talk to you?
 * Tweet [@Haydos585](http://twitter.com/haydos585)
-* Send me a message on GitHub
-* Open an issue on GitHub
+* [Open an issue](https://github.com/Haydos585/reviewmymp/issues) on GitHub
 * Come to [#reddit-webdesign on Freenode IRC](http://webchat.freenode.net/?channels=reddit-webdesign) and ask about ReviewMy.MP
