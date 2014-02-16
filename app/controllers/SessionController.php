@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends \BaseController {
+class SessionController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -19,8 +19,8 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		//Currently redirects to the home page because why not.
-		return View::make('static_pages.home');
+		//Show Login form
+		return View::make('sessions.create');
 	}
 
 	/**
@@ -30,12 +30,7 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		$user = new User;
-		$user->username = Input::get('username');
-		$user->email = Input::get('email');
-		$user->password = Hash::make(Input::get('password'));
-		$user->save();
-		return Redirect::to("/users/$user->id");
+		//
 	}
 
 	/**
@@ -46,8 +41,7 @@ class UserController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$user = User::where('id', '=', $id)->first();
-		return View::make('users.show')->with('user', $user);
+		//
 	}
 
 	/**

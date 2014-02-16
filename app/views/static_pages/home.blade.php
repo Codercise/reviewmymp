@@ -14,6 +14,6 @@
     {{ Form::label('password', 'Password') }}
     {{ Form::password('password', array('class' => 'form-control')) }}
 
-    {{ Form::button("Submit", array('type' => "submit", "class" => "btn btn-success")) }}
+    {{ Form::button("Submit", array('type' => "submit", "class" => "button success")) }}
   {{ Form::close() }}
 @stop
