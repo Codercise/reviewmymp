@@ -3,16 +3,6 @@
 class SessionController extends \BaseController {
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
@@ -30,40 +20,15 @@ class SessionController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
+		//Log the user in
+		$user = User::where('email', '=', Input::get('email'))->first();
+		if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
+		{
+			Session::put('user', $user);
+			return Redirect::to("/users/{$user->id}");
+		} else {
+			return Redirect::to("/login");
+		}
 	}
 
 	/**
@@ -72,9 +37,16 @@ class SessionController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy()
 	{
-		//
+		//Log the user out
+		$user = Session::get('user');
+		if (Session::flush())
+		{
+			return Redirect::to('/login');
+		} else {
+			return Redirect::to("/users/{$user->id}");
+		}
 	}
 
 }

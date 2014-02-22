@@ -24,6 +24,8 @@ Route::get('/users/{id}', 'UserController@show');
 
 //Session Routes
 Route::get('/login', 'SessionController@create');
+Route::post('/login', 'SessionController@store');
+Route::get('/logout', 'SessionController@destroy');
 //End Session Routes
 
 //Member (of Parliament) Routes
