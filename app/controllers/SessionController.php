@@ -40,12 +40,14 @@ class SessionController extends \BaseController {
 	public function destroy()
 	{
 		//Log the user out
-		$user = Session::get('user');
-		if (Session::flush())
+		Auth::logout();
+		if (Auth::check())
 		{
-			return Redirect::to('/login');
+			$user_id = Auth::user()->id;
+			return Redirect::to("users/{$user_id}");
 		} else {
-			return Redirect::to("/users/{$user->id}");
+			Session::flush();
+			return Redirect::to("/");
 		}
 	}
 

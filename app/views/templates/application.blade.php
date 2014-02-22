@@ -13,10 +13,12 @@
   <div class="navigation">
     <h1>ReviewMy.MP</h1>
     <!-- Unlogged in user navigation -->
-    <ul>
-      <li>{{ link_to_action('UserController@create', "New User") }}</li>
-      <li>{{ link_to_action('SessionController@create', "Login") }}</li>
-    </ul>
+    @if (!Auth::check())
+      <ul>
+        <li>{{ link_to_action('UserController@create', "New User") }}</li>
+        <li>{{ link_to_action('SessionController@create', "Login") }}</li>
+      </ul>
+    @endif
     <!-- End unlogged in user navigation -->
 
     <!-- Logged in user navigation -->
