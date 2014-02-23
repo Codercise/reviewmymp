@@ -20,6 +20,7 @@ Route::controller('member', 'MemberController');
 Route::get('/', 'UserController@create');
 Route::post('/users', 'UserController@store');
 Route::get('/users/{id}', 'UserController@show');
+Route::get('/users/{id}/delete', 'UserController@destroy');
 //End User Routes
 
 //Session Routes

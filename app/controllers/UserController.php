@@ -34,8 +34,15 @@ class UserController extends \BaseController {
 		$user->username = Input::get('username');
 		$user->email = Input::get('email');
 		$user->password = Hash::make(Input::get('password'));
-		$user->save();
-		return Redirect::to("/users/$user->id");
+		$user->role = "User";
+		//$user->save();
+		if ($user->save())
+		{
+			return Redirect::to("/users/$user->id");
+		} else {
+			return Redirect::to('/login');
+		}
+		return "Hello world";
 	}
 
 	/**
@@ -80,7 +87,10 @@ class UserController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//Delete the user
+		$user = User::find($id);
+		$user->delete();
+		return Redirect::to('/');
 	}
 
 }
