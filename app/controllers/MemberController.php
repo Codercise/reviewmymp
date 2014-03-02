@@ -9,7 +9,9 @@ class MemberController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		//List all members
+		$members = Member::all();
+		return View::make('members.index')->with('members', $members);
 	}
 
 	/**

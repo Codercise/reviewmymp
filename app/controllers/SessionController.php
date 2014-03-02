@@ -47,7 +47,7 @@ class SessionController extends \BaseController {
 			return Redirect::to("users/{$user_id}");
 		} else {
 			Session::flush();
-			return Redirect::to("/");
+			return Redirect::to("/login");
 		}
 	}
 

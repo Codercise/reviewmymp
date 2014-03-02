@@ -31,4 +31,6 @@ Route::get('/logout', 'SessionController@destroy');
 
 //Member (of Parliament) Routes
 Route::get('/members/new', 'MemberController@create');
+Route::post('/members', 'MemberController@store');
+Route::get('/members', 'MemberController@index');
 //End Member Routes

@@ -38,11 +38,11 @@ class UserController extends \BaseController {
 		//$user->save();
 		if ($user->save())
 		{
+			Auth::attempt(array('email' => $user->email, 'password' => Input::get('password')));
 			return Redirect::to("/users/$user->id");
 		} else {
 			return Redirect::to('/login');
 		}
-		return "Hello world";
 	}
 
 	/**
