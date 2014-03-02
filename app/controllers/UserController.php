@@ -31,17 +31,26 @@ class UserController extends \BaseController {
 	public function store()
 	{
 		$user = new User;
-		$user->username = Input::get('username');
-		$user->email = Input::get('email');
-		$user->password = Hash::make(Input::get('password'));
+		foreach (Input::except('_token') as $key => $value) {
+			$user[$key] = $value;
+		}
+		$user->password = Hash::make($user->password);
 		$user->role = "User";
-		//$user->save();
-		if ($user->save())
+
+		$validator = Validator::make(
+			array(
+				'user' => $user
+			),
+			array('user["username"]' => 'required')
+		);
+
+		if(!$validator->fails())
 		{
+			$user->save();
 			Auth::attempt(array('email' => $user->email, 'password' => Input::get('password')));
 			return Redirect::to("/users/$user->id");
 		} else {
-			return Redirect::to('/login');
+			return Redirect::to('/');
 		}
 	}
 
