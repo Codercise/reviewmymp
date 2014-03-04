@@ -14,8 +14,8 @@
       {{ Form::label('Phone') }}
       {{ Form::text('Phone') }}
 
-      {{ Form::label('OfficeAddress', "Office Address") }}
-      {{ Form::text('OfficeAddress') }}
+      {{ Form::label('Address', "Office Address") }}
+      {{ Form::text('Address') }}
 
       {{ Form::label('Electorate') }}
       {{ Form::text('Electorate') }}
@@ -38,7 +38,7 @@
       {{ Form::label('Image') }}
       {{ Form::file('Image') }}
 
-      {{ Form::button('Add member', array('class' => 'button success')) }}
+      {{ Form::button('Add member', array("type" => "submit", 'class' => 'button success')) }}
       {{ Form::button('Reset Form', array('class' => 'button alert', 'type' => 'reset')) }}
     {{ Form::close()}}
   @stop

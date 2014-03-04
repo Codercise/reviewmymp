@@ -33,4 +33,5 @@ Route::get('/logout', 'SessionController@destroy');
 Route::get('/members/new', 'MemberController@create');
 Route::post('/members', 'MemberController@store');
 Route::get('/members', 'MemberController@index');
+Route::get('/members/{id}', 'MemberController@show');
 //End Member Routes
