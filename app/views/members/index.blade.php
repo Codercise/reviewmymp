@@ -1,4 +1,6 @@
 @extends('templates.application');
 @section('content')
-  <p>hello world</p>
+  @foreach($members as $member)
+    {{ $member->name }}
+  @endforeach
 @stop
