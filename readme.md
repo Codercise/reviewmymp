@@ -22,6 +22,19 @@ ReviewMy.MP is made on the LAMA stack. It uses the following technology
 
 Each piece of the LAMA stack has it's own dependencies and if you're looking at contributing or starting your own project based off of ReviewMy.MP it will be best to review each piece of the puzzle and listen to them about requirements and help getting started.
 
+###License?
+Reviewmy.mp is under the [Creative Commons Attribution Non-Commercial License.](https://tldrlegal.com/license/creative-commons-attribution-noncommercial-(cc-nc)) If you would like to request another form of license for this software (in part or entirety) please use the contact details below. CC-NC allows you to do the following:
+
+* Modify
+* Distribute
+
+It stops you from doing:
+
+* Commercial Use
+* Sublicense
+* Place Warranty
+* Hold Liable
+
 ### How do I talk to you?
 * Tweet [@Haydos585](http://twitter.com/haydos585)
 * [Open an issue](https://github.com/Haydos585/reviewmymp/issues) on GitHub
