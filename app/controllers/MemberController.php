@@ -35,6 +35,10 @@ class MemberController extends \BaseController {
     foreach (Input::except('_token') as $key => $value) {
       $member[$key] = $value;
     }
+    $image = Input::file("Image");
+    $destination_path = "mp_images";
+    $filename = "{$member['first_name']}-{$member['last_name']}.{$image->getClientOriginalExtension()}";
+    $image->move($destination_path, $filename); //$image->move($destination_path, "mp-image");
     $validator = Validator::make(
       array(
         'member' => $member

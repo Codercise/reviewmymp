@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class SplitMemberName extends Migration {
+class AddChamberToMembers extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,8 +13,7 @@ class SplitMemberName extends Migration {
 	public function up()
 	{
 		Schema::table('members', function($t) {
-			$t->renameColumn('name', 'first_name');
-			$t->string('last_name', 50)->after('name');
+			$t->string('chamber')->after('electorate');
 		});
 	}
 
