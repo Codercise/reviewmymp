@@ -19,8 +19,8 @@ Route::controller('member', 'MemberController');
 //User Routes
 Route::get('/', 'UserController@create');
 Route::post('/users', 'UserController@store');
-Route::get('/users/{id}', 'UserController@show');
-Route::get('/users/{id}/delete', 'UserController@destroy');
+Route::get('/users/{username}', 'UserController@show');
+Route::get('/users/{username}/delete', 'UserController@destroy');
 //End User Routes
 
 //Session Routes
@@ -33,5 +33,5 @@ Route::get('/logout', 'SessionController@destroy');
 Route::get('/members/new', 'MemberController@create');
 Route::post('/members', 'MemberController@store');
 Route::get('/members', 'MemberController@index');
-Route::get('/members/{id}', 'MemberController@show');
+Route::get('/members/{first_name}-{last_name}-{electorate}', 'MemberController@show');
 //End Member Routes

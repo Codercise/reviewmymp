@@ -63,9 +63,9 @@ class MemberController extends \BaseController {
    * @param  int  $id
    * @return Response
    */
-  public function show($id)
+  public function show($first_name, $last_name, $electorate)
   {
-    $member = Member::where('id', '=', $id)->first();
+    $member = Member::where('first_name', '=', $first_name, 'and', 'last_name', $last_name, 'and', 'electorate', '=', 'electorate')->first();
     return View::make('members.show')->with('member', $member);
   }
 

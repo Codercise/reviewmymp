@@ -1,14 +1,29 @@
-@extends('templates.application');
+@extends('templates.application')
 @section('content')
   <h2>All Member of Parliament</h2>
   @if($members->count() > 0)
-    <ul>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Party</th>
+        <th>Electorate</th>
+        <th>State</th>
+      </thead>
+      <tbody>
       @foreach($members as $member)
-        <li>{{ $member->first_name }} {{ $member->last_name }}</li>
+        <tr>
+          <td>{{ link_to_action("MemberController@show", "{$member->first_name} {$member->last_name}", array($member->first_name, $member->last_name, $member->electorate)) }}</td>
+          <td>{{ $member->email }}</td>
+          <td>{{ $member->party }}</td>
+          <td>{{ $member->electorate }}</td>
+          <td>{{ $member->state }}</td>
+        </tr>
       @endforeach
+      </tbody>
+
     </ul>
   @else
     <h3>There are no Members of Parliament for the chosen criteria</h3>
-    <img src="<?=Croppa::url('/mp_images/ali.jpg', 150, 150, array('resize'))?>" />
   @endif
 @stop

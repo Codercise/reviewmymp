@@ -64,9 +64,9 @@ class UserController extends \BaseController {
    * @param  int  $id
    * @return Response
    */
-  public function show($id)
+  public function show($username)
   {
-    $user = User::where('id', '=', $id)->first();
+    $user = User::where('username', '=', $username)->first();
     return View::make('users.show')->with('user', $user);
   }
 
