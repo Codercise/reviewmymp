@@ -15,11 +15,13 @@ class CreateMembersTable extends Migration {
 		//Create Members (of parliament) table
 		Schema::create('members', function($t){
 			$t->increments('id');
-			$t->string('name', 80);
+			$t->string('first_name', 50);
+			$t->string('last_name', 50);
 			$t->string('email', 150);
 			$t->string('phone', 20);
 			$t->string('address', 100);
 			$t->string('electorate', 35);
+			$t->string('chamber');
 			$t->string('area_of_government', 7);
 			$t->string('ministry', 128);
 			$t->string('state', 35);

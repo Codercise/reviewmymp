@@ -35,3 +35,7 @@ Route::post('/members', 'MemberController@store');
 Route::get('/members', 'MemberController@index');
 Route::get('/members/{first_name}-{last_name}-{electorate}', 'MemberController@show');
 //End Member Routes
+
+//Review Member Routes
+Route::get('/members/{first_name}-{last_name}-{electorate}/review', 'ReviewController@create');
+//End Review Member Routes

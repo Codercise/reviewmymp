@@ -6,3 +6,5 @@ body {
   .container .navbar {
     border: none;
     background-color: #fcfcfc; }
+  .container textarea.five-hundred-characters {
+    height: 6.3125rem; }
