@@ -10,6 +10,7 @@ class ReviewController extends \BaseController {
   public function index()
   {
     //
+    return "hello";
   }
 
   /**
@@ -19,8 +20,8 @@ class ReviewController extends \BaseController {
    */
   public function create($first_name, $last_name, $electorate)
   {
-
-    return View::make('reviews.create');
+    $member = Member::where('first_name', '=', $first_name, 'and', 'last_name', $last_name, 'and', 'electorate', '=', $electorate)->first();
+    return View::make('reviews.create')->with('member', $member);
   }
 
   /**
@@ -28,9 +29,31 @@ class ReviewController extends \BaseController {
    *
    * @return Response
    */
-  public function store()
+  public function store($first_name, $last_name, $electorate)
   {
-    //
+    $review = new Review;
+    $member = Member::where('first_name', '=', $first_name, 'and', 'last_name', $last_name, 'and', 'electorate', '=', $electorate)->first();
+    foreach (Input::except('_token') as $key => $value) {
+      $review[$key] = $value;
+    }
+    $review->member_id = $member->id;
+    $review->user_id = Auth::user()->id;
+    $validator = Validator::make(
+      array(
+        'review' => $review
+      ),
+      array(
+        //'member["email"]' => 'required|email|unique:users,email',
+      )
+    );
+
+    if(!$validator->fails())
+    {
+      $review->save();
+      return Redirect::to("/members/{$first_name}-{$last_name}-{$electorate}/reviews");
+    } else {
+      return Redirect::to('/members/{$review->member->first_name}-{$review->member->last_name}-{$review->member->electorate}');
+    }
   }
 
   /**

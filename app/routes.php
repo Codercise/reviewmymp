@@ -38,4 +38,6 @@ Route::get('/members/{first_name}-{last_name}-{electorate}', 'MemberController@s
 
 //Review Member Routes
 Route::get('/members/{first_name}-{last_name}-{electorate}/review', 'ReviewController@create');
+Route::post('/members/{first_name}-{last_name}-{electorate}/review', 'ReviewController@store');
+Route::get('/members/{first_name}-{last_name}-{electorate}/reviews', 'ReviewController@index');
 //End Review Member Routes
