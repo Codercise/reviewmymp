@@ -3,7 +3,7 @@
 
     public function Members()
     {
-      return $this->belongsTo('Members');
+      return $this->belongsTo('Member');
     }
 
     public function Users()

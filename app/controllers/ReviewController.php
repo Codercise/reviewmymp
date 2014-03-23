@@ -7,10 +7,11 @@ class ReviewController extends \BaseController {
    *
    * @return Response
    */
-  public function index()
+  public function index($first_name, $last_name, $electorate)
   {
-    //
-    return "hello";
+    $member = Member::where('first_name', '=', $first_name, 'and', 'last_name', $last_name, 'and', 'electorate', '=', $electorate)->first();
+    $reviews = $member->reviews()->get();
+    return View::make('reviews.index')->with('reviews', $reviews)->with('member', $member);
   }
 
   /**
