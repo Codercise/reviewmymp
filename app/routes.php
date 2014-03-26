@@ -40,4 +40,5 @@ Route::get('/members/{first_name}-{last_name}-{electorate}', 'MemberController@s
 Route::get('/members/{first_name}-{last_name}-{electorate}/review', 'ReviewController@create');
 Route::post('/members/{first_name}-{last_name}-{electorate}/review', 'ReviewController@store');
 Route::get('/members/{first_name}-{last_name}-{electorate}/reviews', 'ReviewController@index');
+Route::delete('/members/{first_name}-{last_name}-{electorate}/reviews/{review_id}', 'ReviewController@destroy');
 //End Review Member Routes

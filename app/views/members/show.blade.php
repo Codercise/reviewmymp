@@ -6,6 +6,7 @@
     @foreach ($member["attributes"] as $key => $value)
       <li><strong>{{ ucfirst($key) }}:</strong> {{ $value }}</li>
     @endforeach
+      <li><strong>{{ link_to_action('ReviewController@index', "View all reviews for $member->first_name $member->last_name ", array($member->first_name, $member->last_name, $member->electorate)); }}</strong></li>
     </ul>
 
     <h3>{{ link_to_action('ReviewController@create', "Review {$member->first_name} {$member->last_name}", array($member->first_name, $member->last_name, $member->electorate)) }}</h3>

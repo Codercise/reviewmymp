@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,7 @@
       <!-- Logged in user navigation -->
       @elseif (Auth::check())
         <li>{{ link_to_action('MemberController@index', "Show all Members of Parliament") }}</li>
+        <li>{{ link_to_action('UserController@show', Auth::user()->username, array(Auth::user()->username))}}
         <li>{{ link_to_action('MemberController@create', "New MP") }}</li>
         <li>{{ link_to_action('SessionController@destroy', "Logout") }}</li>
       <!-- End logged in user navigation -->

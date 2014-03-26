@@ -10,8 +10,28 @@ class ReviewController extends \BaseController {
   public function index($first_name, $last_name, $electorate)
   {
     $member = Member::where('first_name', '=', $first_name, 'and', 'last_name', $last_name, 'and', 'electorate', '=', $electorate)->first();
-    $reviews = $member->reviews()->get();
-    return View::make('reviews.index')->with('reviews', $reviews)->with('member', $member);
+    $last_five_reviews = $member->reviews()->take(5)->get();
+    $all_reviews = $member->reviews()->get();
+
+    $average = 0;
+    $count = count($all_reviews);
+    $knowledge_total = 0;
+    $member_averages = array(
+      'responses' => 0,
+      'promises' => 0,
+      'community' => 0,
+      'knowledge' => 0,
+      );
+
+    foreach ($all_reviews as $key => $value) {
+      $member_averages["responses"] += intval($value->responses) / $count;
+      $member_averages["promises"] += intval($value->promises) / $count;
+      $member_averages["community"] += intval($value->community) / $count;
+      $member_averages["knowledge"] += intval($value->knowledge) / $count;
+    }
+    return View::make('reviews.index')->with('last_five_reviews', $last_five_reviews)
+                                      ->with('member', $member)
+                                      ->with('member_averages', $member_averages);
   }
 
   /**
@@ -96,9 +116,10 @@ class ReviewController extends \BaseController {
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy($first_name, $last_name, $electorate, $id)
   {
-    //
+    $review = Review::find($id);
+    $review->delete;
+    return Redirect::action("ReviewController@index", array($member->first_name, $member->last_name, $member->electorate));
   }
-
 }
