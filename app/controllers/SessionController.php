@@ -25,7 +25,7 @@ class SessionController extends \BaseController {
 		if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
 		{
 			Session::put('user', $user);
-			return Redirect::to("/users/{$user->id}");
+			return Redirect::to("/users/{$user->username}");
 		} else {
 			return Redirect::to("/login");
 		}

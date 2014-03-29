@@ -119,7 +119,7 @@ class ReviewController extends \BaseController {
   public function destroy($first_name, $last_name, $electorate, $id)
   {
     $review = Review::find($id);
-    $review->delete;
-    return Redirect::action("ReviewController@index", array($member->first_name, $member->last_name, $member->electorate));
+    $review->delete();
+    return Redirect::to("/members/$first_name-$last_name-$electorate/reviews");
   }
 }

@@ -22,7 +22,12 @@
           <td>{{ $review->knowledge }}</td>
           <td>{{ $review->additional_review }}</td>
           @if (Auth::user()->role == "Admin")
-            <td>{{ link_to_action("ReviewController@destroy", "Delete Review", array($member->first_name, $member->last_name, $member->electorate, $review->id)) }}</td>
+            <td>{{ link_to_action("ReviewController@destroy", "Delete Review", array($member->first_name, $member->last_name, $member->electorate, $review->id)) }}
+              <!-- I'd love to use a DELETE verb but at this stage it's just going to be easier to do it with a get request. -->
+              <!--{Form::open(array('action' => 'ReviewController@destroy', $member->first_name, $member->last_name, $member->electorate, $review->id, 'method' => 'delete')) }}
+                { Form::button("Submit Review", array('type' => 'submit', 'class' => 'button alert')) }
+              { Form::close()} -->
+            </td>
           @endif
         </tr>
     @endforeach
