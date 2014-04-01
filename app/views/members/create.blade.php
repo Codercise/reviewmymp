@@ -1,7 +1,7 @@
 @extends('templates.application')
   @section('content')
     <h2>Add new member</h2>
-    {{ Form::open(array("action" => "MemberController@store", "files" => true, "class" => "small-6", "role" => "form"))}}
+    {{ Form::open(array("action" => "MemberController@store", "files" => true, "class" => "small-12", "role" => "form"))}}
       {{ Form::label('First Name') }}
       {{ Form::text('first_name') }}
 

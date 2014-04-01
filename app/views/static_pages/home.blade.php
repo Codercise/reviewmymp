@@ -1,7 +1,7 @@
 @extends('templates/application')
 @section('content')
   <h2>New User</h2>
-  {{ Form::open(array('action' => "UserController@store", "class" => "small-6","role" => "form"), array()) }}
+  {{ Form::open(array('action' => "UserController@store", "class" => "small-12","role" => "form"), array()) }}
 
     {{ Form::label('username', 'Username') }}
     {{ Form::text('username', "", array('class' => 'form-control')) }}
