@@ -18,7 +18,7 @@ Route::controller('review', 'ReviewController');
 //End Controllers
 
 //User Routes
-Route::get('/', 'UserController@create');
+Route::get('/', array('before' => 'guest', 'uses' => 'UserController@create'));
 Route::post('/users', 'UserController@store');
 Route::get('/users/{username}', 'UserController@show');
 Route::get('/users/{username}/delete', 'UserController@destroy');

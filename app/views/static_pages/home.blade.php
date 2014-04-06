@@ -12,6 +12,9 @@
     {{ Form::label('password', 'Password') }}
     {{ Form::password('password', array('class' => 'form-control')) }}
 
+    {{ Form::label('postcode', 'Postcode') }}
+    {{ Form::text('postcode', "", array('class' => 'form-control')) }}
+
     {{ Form::button("Submit", array('type' => "submit", "class" => "small-12 button success")) }}
   {{ Form::close() }}
 @stop

@@ -36,25 +36,31 @@ class UserController extends \BaseController {
     }
     $user->password = Hash::make($user->password);
     $user->role = "User";
-
+    $user_validation = (array) $user;
     $validator = Validator::make(
       array(
-        'user' => $user
+        'username' => $user->username,
+        'email' => $user->email,
+        'password' => $user->password,
+        'postcode' => $user->postcode
       ),
       array(
-        'user["username"]' => 'required|unique:users,username',
-        'user["email"]' => 'required|email|unique:users,email',
-        'user["password"]' => 'required|min:8'
+        'username' => 'required|unique:users,username',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|min:8',
+        'postcode' => 'required',
       )
-    );
 
+    );
+    //return $user .var_dump($validator->errors());
     if(!$validator->fails())
     {
       $user->save();
       Auth::attempt(array('email' => $user->email, 'password' => Input::get('password')));
-      return Redirect::to("/users/$user->id");
+      return Redirect::to("/users/$user->username");
     } else {
-      return Redirect::to('/');
+      echo $validator->errors() .$user->username;
+      //return Redirect::to('/');
     }
   }
 
