@@ -7,6 +7,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Party</th>
+        <th>Chamber</th>
         <th>Electorate</th>
         <th>State</th>
       </thead>
@@ -16,6 +17,7 @@
           <td>{{ link_to_action("MemberController@show", "{$member->first_name} {$member->last_name}", array($member->first_name, $member->last_name, $member->electorate)) }}</td>
           <td>{{ $member->email }}</td>
           <td>{{ $member->party }}</td>
+          <td>{{ $member->chamber}}
           <td>{{ $member->electorate }}</td>
           <td>{{ $member->state }}</td>
         </tr>

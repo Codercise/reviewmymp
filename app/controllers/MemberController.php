@@ -10,7 +10,7 @@ class MemberController extends \BaseController {
   public function index()
   {
     //List all members
-    $members = Member::all();
+    $members = Member::remember(60)->all();
     return View::make('members.index')->with('members', $members);
   }
 

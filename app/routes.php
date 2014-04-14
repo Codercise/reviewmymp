@@ -11,10 +11,10 @@
 |
 */
 //Registering Controllers
-Route::controller('user', 'UserController');
-Route::controller('session', 'SessionController');
-Route::controller('member', 'MemberController');
-Route::controller('review', 'ReviewController');
+Route::controller('users', 'UserController');
+Route::controller('sessions', 'SessionController');
+Route::controller('members', 'MemberController');
+Route::controller('reviews', 'ReviewController');
 //End Controllers
 
 //User Routes
