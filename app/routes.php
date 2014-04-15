@@ -31,7 +31,7 @@ Route::get('/logout', 'SessionController@destroy');
 //End Session Routes
 
 //Member (of Parliament) Routes
-Route::get('/members/new', 'MemberController@create');
+Route::get('/members/new', array('before' => 'admin', 'uses' => 'MemberController@create'));
 Route::post('/members', 'MemberController@store');
 Route::get('/members', 'MemberController@index');
 Route::get('/members/{first_name}-{last_name}-{electorate}', 'MemberController@show');
